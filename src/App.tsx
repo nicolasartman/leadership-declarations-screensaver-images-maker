@@ -64,7 +64,8 @@ function Instructions(props: { onClose: () => void }) {
       alignItems="center"
       justifyContent={"space-between"}
     >
-      <Grid container item justifyContent="center">
+      <Grid container item alignItems="center" direction="column">
+        <Typography variant="h4">How To Use These As A Screen Saver</Typography>
         <Tabs
           value={currentTab}
           onChange={(_event, value: InstructionsTab) => setCurrentTab(value)}
@@ -136,15 +137,15 @@ function App() {
     )
 
     let zip = new JSZip()
-    let folder = zip.folder("Leadership Declaration Screensaver Images")
+    let folder = zip.folder("Leadership Declaration Images")
     if (folder) {
       for (const [index, imageBlob] of imageBlobs.entries()) {
-        folder.file(`Leadership Declaration Screensaver Image ${index + 1}.png`, imageBlob, {
+        folder.file(`Leadership Declaration ${index + 1}.png`, imageBlob, {
           base64: true,
         })
       }
       const zipContent = await zip.generateAsync({ type: "blob" })
-      saveAs(zipContent, "Leadership Declaration Screensaver Images.zip")
+      saveAs(zipContent, "Leadership Declaration Images.zip")
     }
   }
 
@@ -158,7 +159,7 @@ function App() {
     >
       <Container component="main">
         <Grid container item justifyContent="center">
-          <Typography variant="h3">Leadership Declaration Screensaver</Typography>
+          <Typography variant="h3">Make Leadership Declaration Images</Typography>
           <Grid container item xs={12} sm={10} paddingTop={4}>
             {/* Questions & Answers */}
             <Grid container item direction="column" xs={12} md={6} gap={2} paddingX={2}>
@@ -339,7 +340,15 @@ function App() {
         <Link href="https://www.be-un.com/" target="_blank">
           Un
         </Link>
-        .<br />
+        . Contribute{" "}
+        <Link
+          href="https://github.com/nicolasartman/leadership-declarations-screensaver-images-maker"
+          target="_blank"
+        >
+          on GitHub
+        </Link>
+        .
+        <br />
         These questions were created by{" "}
         <Link href="https://www.be-un.com/about">Gabriel Sakakeeny &amp; Scott Forgey</Link> and all
         credit and rights are theirs.
